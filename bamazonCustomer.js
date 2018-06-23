@@ -89,7 +89,7 @@ function promptUser() {
                 let query2 = connection.query('UPDATE products SET stock_quantity = stock_quantity-? WHERE item_id=?', [answers.question2, answers.question1], function (err2, res2) {
                     if (err2) throw err2;
                     console.log(colors.inverse('Order confirmed!'));
-                    console.log(colors.bgGreen('Total order: $' + parseFloat(res[0].price * answers.question2).toFixed(2) * TAX));
+                    console.log(colors.bgBlue('Total order: $' + parseFloat(res[0].price * answers.question2).toFixed(2) * TAX));
                     connection.end();
                 });
             } else {
