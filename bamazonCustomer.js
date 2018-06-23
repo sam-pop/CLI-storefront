@@ -3,8 +3,9 @@ const Table = require('cli-table');
 const colors = require('colors');
 const inquirer = require('inquirer');
 
-const TAX = 1.0;
+
 const DB = 'bamazon';
+const TAX = 1.0; //to add TAX to the total price calc
 const table = new Table({
     chars: {
         'top': '═',
