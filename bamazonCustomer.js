@@ -48,12 +48,10 @@ connection.connect(function (err) {
 function printAllItems() {
     let query = connection.query('SELECT item_id, product_name, price FROM products', function (err, res) {
         if (err) throw err;
-        table.push([colors.bgRed('Item ID'), colors.bgRed('Item Name'), colors.bgRed('Price')]);
+        let tHeader = [colors.bgRed('Item ID'), colors.bgRed('Item Name'), colors.bgRed('Price')];
+        table.push(tHeader);
         for (let item of res) {
-            let row = [];
-            row.push(colors.gray(item.item_id));
-            row.push(colors.white(item.product_name));
-            row.push(colors.yellow(item.price));
+            let row = [colors.gray(item.item_id), colors.white(item.product_name), colors.yellow(item.price)];
             table.push(row);
         }
         console.log(table.toString());
