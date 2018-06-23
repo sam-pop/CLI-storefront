@@ -50,11 +50,11 @@ function printAllItems() {
         if (err) throw err;
         table.push([colors.bgRed('Item ID'), colors.bgRed('Item Name'), colors.bgRed('Price')]);
         for (let item of res) {
-            let items = [];
-            items.push(colors.gray(item.item_id));
-            items.push(colors.white(item.product_name));
-            items.push(colors.yellow(item.price));
-            table.push(items);
+            let row = [];
+            row.push(colors.gray(item.item_id));
+            row.push(colors.white(item.product_name));
+            row.push(colors.yellow(item.price));
+            table.push(row);
         }
         console.log(table.toString());
     });
