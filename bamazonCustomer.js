@@ -58,8 +58,6 @@ function printAllItems() {
         }
         console.log(table.toString());
     });
-    // connection.end();
-
 }
 
 //prompts the user for the item id and quantity or the product he's interested in
@@ -83,20 +81,20 @@ function promptUser() {
             if (res.length == 0) {
                 console.log(colors.bgRed("Item ID doesn't exists! Please try again..."));
                 promptUser();
-            }
-            //UPDATE query
-            if (res[0].stock_quantity >= answers.question2) {
-                let query2 = connection.query('UPDATE products SET stock_quantity = stock_quantity-? WHERE item_id=?', [answers.question2, answers.question1], function (err2, res2) {
-                    if (err2) throw err2;
-                    console.log(colors.inverse('Order confirmed!'));
-                    console.log(colors.bgBlue('Total order: $' + parseFloat(res[0].price * answers.question2).toFixed(2) * TAX));
-                    connection.end();
-                });
-            } else {
-                //error msg if requested quantity is bigger than stock quantity
-                console.log(colors.bgRed("Insufficient quantity! Please try again..."));
-                promptUser();
-            }
+            } else
+                //UPDATE query
+                if (res[0].stock_quantity >= answers.question2) {
+                    let query2 = connection.query('UPDATE products SET stock_quantity = stock_quantity-? WHERE item_id=?', [answers.question2, answers.question1], function (err2, res2) {
+                        if (err2) throw err2;
+                        console.log(colors.inverse('Order confirmed!'));
+                        console.log(colors.bgBlue('Total order: $' + parseFloat(res[0].price * answers.question2).toFixed(2) * TAX));
+                        connection.end();
+                    });
+                } else {
+                    //error msg if requested quantity is bigger than stock quantity
+                    console.log(colors.bgRed("Insufficient quantity! Please try again..."));
+                    promptUser();
+                }
         });
     });
 }
