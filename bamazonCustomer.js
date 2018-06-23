@@ -37,6 +37,9 @@ connection.connect(function (err) {
     if (err) throw err;
     console.log('Connection established! id: ' + connection.threadId + '\n');
     printAllItems();
+    //TODO: add user prompt with two messages: (save into vars?)
+    //1) ask them the ID of the product they would like to buy.
+    //2) ask how many units of the product they would like to buy.
 });
 
 
