@@ -65,7 +65,7 @@ function promptUser() {
     inquirer.prompt([{
             type: 'input',
             name: 'question1',
-            message: 'Please enter the' + colors.yellow(' Item ID') + ' of the product they would like to buy:',
+            message: 'Please enter the' + colors.yellow(' Item ID') + ' of the product you would like to buy:',
         },
         {
             type: 'input',
