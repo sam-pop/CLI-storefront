@@ -3,6 +3,7 @@ const Table = require('cli-table');
 const colors = require('colors');
 const inquirer = require('inquirer');
 
+const TAX = 1.0;
 const DB = 'bamazon';
 const table = new Table({
     chars: {
@@ -86,7 +87,8 @@ function promptUser() {
             if (res[0].stock_quantity >= answers.question2) {
                 let query2 = connection.query('UPDATE products SET stock_quantity = stock_quantity-? WHERE item_id=?', [answers.question2, answers.question1], function (err2, res2) {
                     if (err2) throw err2;
-                    console.log(colors.bgGreen('Total order: $' + (res[0].price * answers.question2)));
+                    console.log(colors.inverse('Order confirmed!'));
+                    console.log(colors.bgGreen('Total order: $' + parseFloat(res[0].price * answers.question2).toFixed(2) * TAX));
                     connection.end();
                 });
             } else {
