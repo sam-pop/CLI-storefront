@@ -39,9 +39,6 @@ connection.connect(function (err) {
     console.log('Connection established! id: ' + connection.threadId + '\n');
     printAllItems();
     promptUser();
-    //TODO: add user prompt with two messages: (save into vars?)
-    //1) ask them the ID of the product they would like to buy.
-    //2) ask how many units of the product they would like to buy.
 });
 
 
@@ -63,6 +60,7 @@ function printAllItems() {
 
 }
 
+//prompts the user for the item id and quantity or the product he's interested in
 function promptUser() {
     inquirer.prompt([{
             type: 'input',
@@ -74,18 +72,23 @@ function promptUser() {
             name: 'question2',
             message: 'How many units of the product would you like to buy?',
         },
+        //promise: mysql queries (SELECT & UPDATE)
     ]).then(function (answers) {
+        //SELECT query
         let query = connection.query('SELECT stock_quantity FROM products WHERE item_id=?', answers.question1, function (err, res) {
             if (err) throw err;
+            //error msg if id doesn't exist
             if (res.length == 0) {
                 console.log(colors.bgRed("Item ID doesn't exists! Please try again..."));
                 promptUser();
             }
+            //UPDATE query
             if (res[0].stock_quantity >= answers.question2) {
                 let query2 = connection.query('UPDATE products SET stock_quantity = stock_quantity-? WHERE item_id=?', [answers.question2, answers.question1], function (err, res) {
                     if (err) throw err;
                 });
             } else {
+                //error msg if requested quantity is bigger than stock quantity
                 console.log(colors.bgRed("Insufficient quantity! Please try again..."));
                 promptUser();
             }
