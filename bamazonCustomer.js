@@ -75,7 +75,7 @@ function promptUser() {
         //promise: mysql queries (SELECT & UPDATE)
     ]).then(function (answers) {
         //SELECT query
-        let query = connection.query('SELECT stock_quantity FROM products WHERE item_id=?', answers.question1, function (err, res) {
+        let query = connection.query('SELECT stock_quantity, price FROM products WHERE item_id=?', answers.question1, function (err, res) {
             if (err) throw err;
             //error msg if id doesn't exist
             if (res.length == 0) {
@@ -84,8 +84,10 @@ function promptUser() {
             }
             //UPDATE query
             if (res[0].stock_quantity >= answers.question2) {
-                let query2 = connection.query('UPDATE products SET stock_quantity = stock_quantity-? WHERE item_id=?', [answers.question2, answers.question1], function (err, res) {
-                    if (err) throw err;
+                let query2 = connection.query('UPDATE products SET stock_quantity = stock_quantity-? WHERE item_id=?', [answers.question2, answers.question1], function (err2, res2) {
+                    if (err2) throw err2;
+                    console.log(colors.bgGreen('Total order: $' + (res[0].price * answers.question2)));
+                    connection.end();
                 });
             } else {
                 //error msg if requested quantity is bigger than stock quantity
