@@ -50,7 +50,7 @@ function printAllItems() {
         let tHeader = [colors.bgRed('Item ID'), colors.bgRed('Item Name'), colors.bgRed('Price')];
         table.push(tHeader);
         for (let item of res) {
-            let row = [colors.gray(item.item_id), colors.white(item.product_name), colors.yellow(item.price)];
+            let row = [colors.gray(item.item_id), colors.white(item.product_name), colors.yellow('$' + item.price)];
             table.push(row);
         }
         console.log(table.toString());
