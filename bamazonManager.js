@@ -17,12 +17,11 @@ let connection = mysql.createConnection({
     database: DB
 });
 
-//establish a connection --> print all the items
+//establish a connection and initialize
 connection.connect(function (err) {
     if (err) throw err;
     console.log(colors.bgYellow.black('\nWelcome to bamazon Manager-View! Your session id: #' + connection.threadId + '\n'));
     init();
-    //connection.end();
 });
 
 //init new table view and the user prompt (inquirer)
@@ -81,24 +80,24 @@ function init() {
                 inquirer.prompt([{
                         type: 'input',
                         name: 'id',
-                        message: 'Please enter the new item\'s ' + colors.yellow.bold('ID') + ':'
+                        message: 'Please enter the new item ' + colors.yellow.bold('ID') + ':'
                     }, {
                         type: 'input',
                         name: 'name',
-                        message: 'Please enter the new item\'s ' + colors.yellow.bold('name') + ':'
+                        message: 'Please enter the new item ' + colors.yellow.bold('name') + ':'
                     },
                     {
                         type: 'input',
                         name: 'dep',
-                        message: 'Please enter the new item\'s ' + colors.yellow.bold('department') + ':'
+                        message: 'Please enter the new item ' + colors.yellow.bold('department') + ':'
                     }, {
                         type: 'input',
                         name: 'p',
-                        message: 'Please enter the new item\'s ' + colors.yellow.bold('price') + ':'
+                        message: 'Please enter the new item ' + colors.yellow.bold('price') + ':'
                     }, {
                         type: 'input',
                         name: 'amount',
-                        message: 'Please enter the new item\'s ' + colors.yellow.bold('stock quantity') + ':'
+                        message: 'Please enter the new item ' + colors.yellow.bold('stock quantity') + ':'
                     }
                 ]).then(function (answers) {
                     addNewProduct(answers.id, answers.name, answers.dep, answers.p, answers.amount);

@@ -82,9 +82,10 @@ function promptUser() {
             } else
                 //UPDATE query
                 if (res[0].stock_quantity >= answers.question2) {
-                    connection.query('UPDATE products SET stock_quantity = stock_quantity-? WHERE item_id=?', [answers.question2, answers.question1], function (err2, res2) {
+                    let total = parseFloat(res[0].price * answers.question2).toFixed(2) * TAX;
+                    connection.query('UPDATE products SET stock_quantity = stock_quantity-? ,product_sales = product_sales+? WHERE item_id=?', [answers.question2, total, answers.question1], function (err2, res2) {
                         if (err2) throw err2;
-                        console.log(colors.bold('\nOrder confirmed! '), 'Your total is: ' + colors.bgGreen.bold('$' + parseFloat(res[0].price * answers.question2).toFixed(2) * TAX + '\n'));
+                        console.log(colors.bold('\nOrder confirmed! '), 'Your total is: ' + colors.bgGreen.bold('$' + total + '\n'));
                         inquirer.prompt([{
                             type: 'confirm',
                             name: 'question3',
