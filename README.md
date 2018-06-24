@@ -9,3 +9,11 @@ Below are examples of the different store views: (click on the image for the ful
 ### Customer View
 
 [![bamazon_Customer.gif](https://s8.postimg.cc/c38ci1rlx/bamazon_Customer.gif)](https://youtu.be/cKullh4pPqQ)
+
+### Manager View
+
+[![bamazon_Manager.gif](https://s8.postimg.cc/gcd2kb2lx/bamazon_Manager.gif)](https://youtu.be/o5I7rBO1v5k)
+
+### Supervisor View
+
+[![bamazon_Supervisor.gif](https://s8.postimg.cc/cfzqocchh/bamazon_Supervisor.gif)](https://youtu.be/Q20lfLzt8ig)
