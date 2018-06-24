@@ -77,8 +77,31 @@ function init() {
                 });
                 break;
             case 'Add New Product':
-                console.log('\n');
-                addNewProduct();
+                inquirer.prompt([{
+                        type: 'input',
+                        name: 'id',
+                        message: 'Please enter the new item\'s ' + colors.yellow.bold('ID') + ':'
+                    }, {
+                        type: 'input',
+                        name: 'name',
+                        message: 'Please enter the new item\'s ' + colors.yellow.bold('name') + ':'
+                    },
+                    {
+                        type: 'input',
+                        name: 'dep',
+                        message: 'Please enter the new item\'s ' + colors.yellow.bold('department') + ':'
+                    }, {
+                        type: 'input',
+                        name: 'p',
+                        message: 'Please enter the new item\'s ' + colors.yellow.bold('price') + ':'
+                    }, {
+                        type: 'input',
+                        name: 'amount',
+                        message: 'Please enter the new item\'s ' + colors.yellow.bold('stock quantity') + ':'
+                    }
+                ]).then(function (answers) {
+                    addNewProduct(answers.id, answers.name, answers.dep, answers.p, answers.amount);
+                });
                 break;
             case colors.bgRed.white('EXIT'):
                 connection.end();
@@ -125,7 +148,7 @@ function addToInventory(item, amount) {
         connection.query('UPDATE products SET stock_quantity = stock_quantity+? WHERE item_id = ?', [amount, item], function (err, res) {
             if (err) throw err;
             if (res.changedRows > 0) {
-                console.log(colors.bgGreen("\nStock Quantity UPDATED!\n"));
+                console.log(colors.bgGreen.bold("\nStock Quantity UPDATED!\n"));
             } else
                 console.log(colors.bgRed("\nItem not found! try again...\n"));
             init();
@@ -147,15 +170,15 @@ function addNewProduct(id, name, dep, p, amount) {
     };
     connection.query('INSERT INTO products SET ?', itemToAdd, function (err, res) {
         if (err) {
-            console.log('Please try again!');
+            console.log(colors.bgRed("\nPlease try again...\n"));
         } else {
             let tHeader = [colors.bgRed('Product ID'), colors.bgRed('Product Name'), colors.bgRed('Department'), colors.bgRed('Product Price'), colors.bgRed('Stock Quantity')];
             table.push(tHeader);
             let row = [colors.gray(id), colors.white(name), colors.white(dep), colors.white('$' + p), colors.yellow(amount)];
             table.push(row);
-            console.log(colors.bold('The following item has been added:'));
+            console.log(colors.bgGreen.bold('\nThe following item has been added:'));
             console.log(table.toString());
         }
-        // promptUser();
+        init();
     });
 }
