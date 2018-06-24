@@ -87,17 +87,15 @@ function init() {
 }
 
 function viewProductSalesByDept() {
-    let q = connection.query('SELECT departments.department_id, departments.department_name, departments.over_head_costs, SUM(products.product_sales) AS product_sales FROM departments INNER JOIN products ON departments.department_name = products.department_name GROUP BY department_name;', function (err, res) {
+    let q = connection.query('SELECT departments.department_id, departments.department_name, departments.over_head_costs, SUM(products.product_sales) AS product_sales, product_sales-departments.over_head_costs AS total_profit FROM departments INNER JOIN products ON departments.department_name = products.department_name GROUP BY department_name;', function (err, res) {
         if (err) throw err;
         let tHeader = [colors.bgRed('Department ID'), colors.bgRed('Department Name'), colors.bgRed('Over Head Costs'), colors.bgRed('Product Sales'), colors.bgRed('Total Profit')];
         table.push(tHeader);
-        console.log(q.sql);
-        console.log(res);
-        // for (let i of res) {
-        //     let row = [colors.gray(item.item_id), colors.white(item.product_name), colors.white('$' + item.price), colors.yellow(item.stock_quantity)];
-        //     table.push(row);
-        // }
-        // console.log(table.toString());
+        for (let i of res) {
+            let row = [colors.gray(i.department_id), colors.white(i.department_name), colors.white('$' + i.over_head_costs), ('$' + i.product_sales), colors.yellow('$' + i.total_profit)];
+            table.push(row);
+        }
+        console.log(table.toString());
         init();
     });
 }

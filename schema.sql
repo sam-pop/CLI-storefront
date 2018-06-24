@@ -33,7 +33,8 @@ VALUES (654968, 'IMI Desert Eagle', 'Hunting', 1725.95, 100, 0),
 (258985, 'Sapiens: a brief history of humankind', 'Books', 57.58, 978, 0),
 (755698, 'SanDisk Disk-on-Key', 'Electronics', 38.83, 565, 0);
 
-INSERT INTO departments VALUES (1,'Hungting', 108421.12),
+INSERT INTO departments 
+VALUES (1,'Hunting', 108421.12),
 (2,'Movies & TV', 142165.29),
 (3,'Grocery & Food', 86422.66),
 (4,'Vehicles', 393257.58),
