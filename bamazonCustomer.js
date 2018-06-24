@@ -49,7 +49,7 @@ function init() {
 
 //prints all the items in the DB with their info (table)
 function printAllItems() {
-    let query = connection.query('SELECT item_id, product_name, price FROM products', function (err, res) {
+    connection.query('SELECT item_id, product_name, price FROM products', function (err, res) {
         if (err) throw err;
         let tHeader = [colors.bgRed('Item ID'), colors.bgRed('Item Name'), colors.bgRed('Price')];
         table.push(tHeader);
