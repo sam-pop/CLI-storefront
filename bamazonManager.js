@@ -25,6 +25,7 @@ connection.connect(function (err) {
     //connection.end();
 });
 
+//init new table view and the user prompt (inquirer)
 function init() {
     //config a new custom table to be used
     table = new Table({
