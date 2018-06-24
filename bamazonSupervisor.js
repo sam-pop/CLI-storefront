@@ -86,13 +86,16 @@ function init() {
     });
 }
 
+//view product sales by department with calculated total profit
 function viewProductSalesByDept() {
-    let q = connection.query('SELECT departments.department_id, departments.department_name, departments.over_head_costs, SUM(products.product_sales) AS product_sales, product_sales-departments.over_head_costs AS total_profit FROM departments INNER JOIN products ON departments.department_name = products.department_name GROUP BY department_name;', function (err, res) {
+    connection.query('SELECT departments.department_id, departments.department_name, departments.over_head_costs, SUM(products.product_sales) AS product_sales, product_sales-departments.over_head_costs AS total_profit FROM departments INNER JOIN products ON departments.department_name = products.department_name GROUP BY department_name ORDER BY department_name', function (err, res) {
         if (err) throw err;
         let tHeader = [colors.bgRed('Department ID'), colors.bgRed('Department Name'), colors.bgRed('Over Head Costs'), colors.bgRed('Product Sales'), colors.bgRed('Total Profit')];
         table.push(tHeader);
         for (let i of res) {
-            let row = [colors.gray(i.department_id), colors.white(i.department_name), colors.white('$' + i.over_head_costs), ('$' + i.product_sales), colors.yellow('$' + i.total_profit)];
+            let tpColor;
+            (i.total_profit > 0) ? tpColor = colors.green('$' + i.total_profit): tpColor = colors.red('$' + i.total_profit);
+            let row = [colors.gray(i.department_id), colors.white(i.department_name), colors.white('$' + i.over_head_costs), ('$' + i.product_sales), tpColor];
             table.push(row);
         }
         console.log(table.toString());
