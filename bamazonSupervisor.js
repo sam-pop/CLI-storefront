@@ -24,9 +24,14 @@ connection.connect(function (err) {
     init();
 });
 
-//init new table view and the user prompt (inquirer)
+//init view
 function init() {
-    //config a new custom table to be used
+    createTable();
+    promptUser();
+}
+
+//config a new custom table to be used
+function createTable() {
     table = new Table({
         chars: {
             'top': '═',
@@ -46,7 +51,10 @@ function init() {
             'middle': '│'
         }
     });
+}
 
+//user prompt using inquirer
+function promptUser() {
     inquirer.prompt([{
         type: 'list',
         name: 'userPick',

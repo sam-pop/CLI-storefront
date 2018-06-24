@@ -39,9 +39,13 @@ let connection = mysql.createConnection({
 connection.connect(function (err) {
     if (err) throw err;
     console.log(colors.bgYellow.black('\nWelcome to bamazon! Join the ' + connection.threadId + ' shoppers that already ordered from us today.\n'));
-    printAllItems();
+    init();
 });
 
+//init view
+function init() {
+    printAllItems();
+}
 
 //prints all the items in the DB with their info (table)
 function printAllItems() {
