@@ -38,9 +38,8 @@ let connection = mysql.createConnection({
 //establish a connection --> print all the items
 connection.connect(function (err) {
     if (err) throw err;
-    console.log('Connection established! id: ' + connection.threadId + '\n');
+    console.log(colors.bgYellow.black('\nWelcome to bamazon! Join the ' + connection.threadId + ' shoppers that already ordered from us today.\n'));
     printAllItems();
-    promptUser();
 });
 
 
@@ -55,6 +54,7 @@ function printAllItems() {
             table.push(row);
         }
         console.log(table.toString());
+        promptUser();
     });
 }
 
@@ -63,17 +63,17 @@ function promptUser() {
     inquirer.prompt([{
             type: 'input',
             name: 'question1',
-            message: 'Please enter the' + colors.yellow(' Item ID') + ' of the product you would like to buy:',
+            message: 'Please enter the' + colors.yellow.bold(' Item ID') + ' of the product you would like to buy:',
         },
         {
             type: 'input',
             name: 'question2',
             message: 'How many units of the product would you like to buy?',
-        },
+        }
         //promise: mysql queries (SELECT & UPDATE)
     ]).then(function (answers) {
         //SELECT query
-        let query = connection.query('SELECT stock_quantity, price FROM products WHERE item_id=?', answers.question1, function (err, res) {
+        connection.query('SELECT stock_quantity, price FROM products WHERE item_id=?', answers.question1, function (err, res) {
             if (err) throw err;
             //error msg if id doesn't exist
             if (res.length == 0) {
@@ -82,11 +82,21 @@ function promptUser() {
             } else
                 //UPDATE query
                 if (res[0].stock_quantity >= answers.question2) {
-                    let query2 = connection.query('UPDATE products SET stock_quantity = stock_quantity-? WHERE item_id=?', [answers.question2, answers.question1], function (err2, res2) {
+                    connection.query('UPDATE products SET stock_quantity = stock_quantity-? WHERE item_id=?', [answers.question2, answers.question1], function (err2, res2) {
                         if (err2) throw err2;
-                        console.log(colors.inverse('Order confirmed!'));
-                        console.log(colors.bgBlue('Total order: $' + parseFloat(res[0].price * answers.question2).toFixed(2) * TAX));
-                        connection.end();
+                        console.log(colors.bold('\nOrder confirmed! '), 'Your total is: ' + colors.bgGreen.bold('$' + parseFloat(res[0].price * answers.question2).toFixed(2) * TAX + '\n'));
+                        inquirer.prompt([{
+                            type: 'confirm',
+                            name: 'question3',
+                            message: 'Would you like to purchase anything else?'
+                        }]).then(function (answers) {
+                            if (answers.question3)
+                                promptUser();
+                            if (!answers.question3) {
+                                console.log(colors.bgYellow.black('\nThank you for shopping with us, we hope to see you back soon!'));
+                                connection.end();
+                            }
+                        });
                     });
                 } else {
                     //error msg if requested quantity is bigger than stock quantity
