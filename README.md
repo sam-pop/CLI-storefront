@@ -37,14 +37,14 @@ This app was built using [Node.js](https://nodejs.org/en/), [mySQL](https://www.
 
 **Below are examples of the different store views:** _(click on the image for the full video)_
 
-### Customer View
+### Customer View:
 
 [![bamazon_Customer.gif](https://s8.postimg.cc/c38ci1rlx/bamazon_Customer.gif)](https://youtu.be/cKullh4pPqQ)
 
-### Manager View
+### Manager View:
 
 [![bamazon_Manager.gif](https://s8.postimg.cc/gcd2kb2lx/bamazon_Manager.gif)](https://youtu.be/o5I7rBO1v5k)
 
-### Supervisor View
+### Supervisor View:
 
 [![bamazon_Supervisor.gif](https://s8.postimg.cc/cfzqocchh/bamazon_Supervisor.gif)](https://youtu.be/Q20lfLzt8ig)
