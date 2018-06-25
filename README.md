@@ -14,12 +14,15 @@ Prerequisites:
 
 Before running the app you will have to use the `npm install` command from the command-line in order to install the required packages (using the _package.json_ file).
 
-Make sure your mySQL server is up and running in the background -> in the mysql console (`mysql -u root`) run the command `source schema.sql` to build our sql schema.
+Make sure your mySQL server is up and running in the background -> from the mysql console (`mysql -u root`) run the command `source schema.sql` to build our sql schema.
 
 Run the following commands:
-`node bamazonCustomer.js` - Customer view.
-`node bamazonManager.js` - Manager view.
-`node bamazonSupervisor.js` - Supervisor view.
+
+`node bamazonCustomer.js` - for the Customer view.
+
+`node bamazonManager.js` - for the Manager view.
+
+`node bamazonSupervisor.js` - for the Supervisor view.
 
 **Below are examples of the different store views:** _(click on the image for the full video)_
 
