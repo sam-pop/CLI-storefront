@@ -16,6 +16,7 @@ Before running the app you will have to use the `npm install` command from the c
 
 Make sure your mySQL server is up and running in the background -> from the mysql console (`mysql -u root`), run the command `source schema.sql` to build our SQL schema.
 
+---
 
 Run the following commands:
 
@@ -25,10 +26,14 @@ Run the following commands:
 
 `node bamazonSupervisor.js` - for theSupervisor view.
 
+---
+
 ## What I used
 
-This app was built using [Node.js](https://nodejs.org/en/), [mySQL](https://www.mysql.com/) and the following NPM packages:
+This app was built using [Node.js](https://nodejs.org/en/), [mySQL](https://www.mysql.com/) for the database and the following NPM packages:
 [inquirer](https://www.npmjs.com/package/inquirer), [mysql](https://www.npmjs.com/package/mysql), [cli-table](https://www.npmjs.com/package/cli-table),[colors](https://www.npmjs.com/package/colors).
+
+## Examples
 
 **Below are examples of the different store views:** _(click on the image for the full video)_
 
