@@ -14,7 +14,8 @@ The app will take in orders from customers and deplete stock from the store's in
 
 Before running the app you will have to use the `npm install` command from the command-line in order to install the required packages (using the _package.json_ file).
 
-Make sure your mySQL server is up and running in the background -> from the mysql console (`mysql -u root`), run the command `source schema.sql` to build our sql schema.
+Make sure your mySQL server is up and running in the background -> from the mysql console (`mysql -u root`), run the command `source schema.sql` to build our SQL schema.
+
 
 Run the following commands:
 
