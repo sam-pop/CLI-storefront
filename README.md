@@ -2,11 +2,11 @@
 
 bamazon is a command line [Node.js](https://nodejs.org/en/) and [mySQL](https://www.mysql.com/) "Amazon-like" storefront app.
 
-The app will take in orders from customers and deplete stock from the store's inventory, track product sales across the store's departments and provide a summary of the sales, over head expanses and profits of the store's departments.
+The app will take in orders from customers and deplete stock from the store's inventory, track product sales across the store's departments and provide a summary of the sales, over-head expanses and profits of each of the store's departments.
 
 ## How to use
 
-Prerequisites:
+**Prerequisites:**
 
 * mySQL server
 * Node.js
