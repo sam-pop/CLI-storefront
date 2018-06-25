@@ -176,17 +176,27 @@ function addNewProduct(id, name, dep, p, amount) {
         price: p,
         stock_quantity: amount
     };
-    connection.query('INSERT INTO products SET ?', itemToAdd, function (err, res) {
-        if (err) {
-            console.log(colors.bgRed("\nPlease try again...\n"));
-        } else {
-            let tHeader = [colors.bgRed('Product ID'), colors.bgRed('Product Name'), colors.bgRed('Department'), colors.bgRed('Product Price'), colors.bgRed('Stock Quantity')];
-            table.push(tHeader);
-            let row = [colors.gray(id), colors.white(name), colors.white(dep), colors.white('$' + p), colors.yellow(amount)];
-            table.push(row);
-            console.log(colors.bgGreen.bold('\nThe following item has been added:'));
-            console.log(table.toString());
-        }
+    if (isNumber(id) && isNumber(p) && isNumber(amount)) {
+        connection.query('INSERT INTO products SET ?', itemToAdd, function (err, res) {
+            if (err) {
+                console.log(colors.bgRed("\nPlease try again...\n"));
+            } else {
+                let tHeader = [colors.bgRed('Product ID'), colors.bgRed('Product Name'), colors.bgRed('Department'), colors.bgRed('Product Price'), colors.bgRed('Stock Quantity')];
+                table.push(tHeader);
+                let row = [colors.gray(id), colors.white(name), colors.white(dep), colors.white('$' + p), colors.yellow(amount)];
+                table.push(row);
+                console.log(colors.bgGreen.bold('\nThe following item has been added:'));
+                console.log(table.toString());
+            }
+            init();
+        });
+    } else {
+        console.log(colors.bgRed("\nItem ID, Price and Amount have to be numbers...\n"));
         init();
-    });
+    }
+}
+
+//checks if the passed arg (n) is a number
+function isNumber(n) {
+    return !isNaN(n - 0);
 }
