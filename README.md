@@ -48,3 +48,7 @@ This app was built using [Node.js](https://nodejs.org/en/), [mySQL](https://www.
 ### Supervisor View:
 
 [![bamazon_Supervisor.gif](https://s8.postimg.cc/cfzqocchh/bamazon_Supervisor.gif)](https://youtu.be/Q20lfLzt8ig)
+
+#### Note
+
+The **Deprecation Warnings** in the examples are from the current mysql module (_v2.15.0_) deprecated methods in node _v10.5.0_.
