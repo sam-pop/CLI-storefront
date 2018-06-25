@@ -4,8 +4,7 @@ bamazon is a command line [Node.js](https://nodejs.org/en/) / [mySQL](https://ww
 
 This CLI app will take in orders from customers and deplete stock from the store's inventory, track product sales across the store's departments and provide a summary of the sales, over-head expenses and profits of each of the store's departments.
 
-The app uses node.js driver for MySQL to establish a connection to the database and utilize SQL queries to retrieve and insert information from and into our database.
-
+The app uses a node.js driver for mysql to establish a connection to the database and utilize SQL queries to perform CRUD operations in the database.
 ## How to use
 
 **Prerequisites:**
