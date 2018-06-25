@@ -10,8 +10,7 @@ The app uses a node.js driver for mysql to establish a connection to the databas
 **Prerequisites:**
 
 * mySQL server
-* Node.js
-* NPM (package manager)
+* Node.js and NPM _(package manager)_
 
 Before running the app, you will have to use the `npm install` command from the command-line to install the required packages (using the _package.json_ file).
 
