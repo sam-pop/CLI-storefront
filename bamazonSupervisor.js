@@ -118,17 +118,27 @@ function createNewDepartment(id, name, ohc) {
         department_name: name,
         over_head_costs: ohc
     };
-    connection.query('INSERT INTO departments SET ?', departmentToAdd, function (err, res) {
-        if (err) {
-            console.log(colors.bgRed("\nPlease try again...\n"));
-        } else {
-            let tHeader = [colors.bgRed('Department ID'), colors.bgRed('Department Name'), colors.bgRed('Over Head Costs')];
-            table.push(tHeader);
-            let row = [colors.gray(id), colors.white(name), colors.white('$' + ohc)];
-            table.push(row);
-            console.log(colors.bgGreen.bold('\nThe following department has been added:'));
-            console.log(table.toString());
-        }
+    if (isNumber(id) && isNumber(ohc)) {
+        connection.query('INSERT INTO departments SET ?', departmentToAdd, function (err, res) {
+            if (err) {
+                console.log(colors.bgRed("\nPlease try again...\n"));
+            } else {
+                let tHeader = [colors.bgRed('Department ID'), colors.bgRed('Department Name'), colors.bgRed('Over Head Costs')];
+                table.push(tHeader);
+                let row = [colors.gray(id), colors.white(name), colors.white('$' + ohc)];
+                table.push(row);
+                console.log(colors.bgGreen.bold('\nThe following department has been added:'));
+                console.log(table.toString());
+            }
+            init();
+        });
+    } else {
+        console.log(colors.bgRed("\nDepartment ID and Over-Head-Costs have to be numbers...\n"));
         init();
-    });
+    }
+}
+
+//checks if the passed arg (n) is a number
+function isNumber(n) {
+    return !isNaN(n - 0);
 }
