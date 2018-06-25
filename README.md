@@ -24,7 +24,7 @@ Run the following commands:
 
 `node bamazonManager.js` - for the Manager view.
 
-`node bamazonSupervisor.js` - for theSupervisor view.
+`node bamazonSupervisor.js` - for the Supervisor view.
 
 ---
 
