@@ -2,7 +2,9 @@
 
 bamazon is a command line [Node.js](https://nodejs.org/en/) / [mySQL](https://www.mysql.com/) "Amazon-like" storefront app.
 
-This CLI app will take in orders from customers and deplete stock from the store's inventory, track product sales across the store's departments and provide a summary of the sales, over-head expanses and profits of each of the store's departments.
+This CLI app will take in orders from customers and deplete stock from the store's inventory, track product sales across the store's departments and provide a summary of the sales, over-head expenses and profits of each of the store's departments.
+
+The app uses node.js driver for MySQL to establish a connection to the database and utilize SQL queries to retrieve and insert information from and into our database.
 
 ## How to use
 
@@ -12,9 +14,9 @@ This CLI app will take in orders from customers and deplete stock from the store
 * Node.js
 * NPM (package manager)
 
-Before running the app you will have to use the `npm install` command from the command-line in order to install the required packages (using the _package.json_ file).
+Before running the app, you will have to use the `npm install` command from the command-line to install the required packages (using the _package.json_ file).
 
-Make sure your mySQL server is up and running in the background -> from the mysql console (`mysql -u root`), run the command `source schema.sql` to build our SQL schema.
+Make sure your MySQL server is up and running in the background -> from the mysql console (`mysql -u root`), run the command `source schema.sql` to build our SQL schema.
 
 ---
 
