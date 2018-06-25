@@ -6,7 +6,12 @@ The app will take in orders from customers and deplete stock from the store's in
 
 ## How to use
 
-Before running the app you will have to use the `npm install` command from the command-line in order to install the required packages (from the package.json file).
+Prerequisites:
+* mySQL server
+* NodeJS
+* NPM
+
+Before running the app you will have to use the `npm install` command from the command-line in order to install the required packages (using the _package.json_ file).
 
 **Below are examples of the different store views:** _(click on the image for the full video)_
 
