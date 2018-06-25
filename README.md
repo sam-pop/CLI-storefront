@@ -30,7 +30,7 @@ Run the following commands:
 
 ## What I used
 
-This app was built using [Node.js](https://nodejs.org/en/), [mySQL](https://www.mysql.com/) for the database and the following NPM packages:
+This app was built using [Node.js](https://nodejs.org/en/), [mySQL](https://www.mysql.com/) (database) and the following NPM packages:
 [inquirer](https://www.npmjs.com/package/inquirer), [mysql](https://www.npmjs.com/package/mysql), [cli-table](https://www.npmjs.com/package/cli-table),[colors](https://www.npmjs.com/package/colors).
 
 ## Examples
